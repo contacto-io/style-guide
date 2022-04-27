@@ -1,5 +1,6 @@
 .sg.contacto-country-input {
     padding-left: 0 !important;
+    padding-right: 8px;
     .country-flag-icon {
         display: inline;
         cursor: pointer;
@@ -42,7 +43,7 @@
         background-color: #fff;
     }
     .sg-country-list-holder {
-        max-height: 220px;
+        max-height: 340px;
         overflow: auto;
     }
 }

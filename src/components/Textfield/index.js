@@ -3,6 +3,7 @@ import { Input, Form } from 'antd'
 import { Text } from '../Typography/index'
 import PropTypes from 'prop-types'
 import './textfield.scss'
+import { Icon } from '../Icon/index'
 
 export const TEXTFIELD_TYPES = ['input', 'search-box', 'no-shadow']
 /**
@@ -19,6 +20,7 @@ export const TextField = React.forwardRef(function TextField(
     readOnly,
     password,
     noShadow,
+    allowClear,
     className = '',
     ...props
   },
@@ -45,6 +47,7 @@ export const TextField = React.forwardRef(function TextField(
         ].join(' ')}
         disabled={readOnly || disabled}
         placeholder={placeholder}
+        allowClear={allowClear && { clearIcon: <Icon name="cancel" size={18} /> }}
         {...props}
         prefix={
           icon ? (
@@ -116,6 +119,7 @@ TextField.propTypes = {
    * Is it a password field?
    */
   password: PropTypes.bool,
+  allowClear: PropTypes.any,
 }
 
 TextField.defaultProps = {

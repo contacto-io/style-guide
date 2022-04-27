@@ -68,14 +68,18 @@
         &.contacto-input--search-box {
             box-shadow: none;
             padding-left: 8px;
+            padding-right: 8px;
         }
 
         &.contacto-input--no-shadow {
             box-shadow: none;
         }
 
-        .anticon.ant-input-clear-icon {
-            font-size: 14px;
+        .ant-input-clear-icon {
+            display: flex;
+            &.ant-input-clear-icon-hidden{
+                display: none;
+            }
         }
 
         .ant-input::placeholder {

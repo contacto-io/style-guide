@@ -29,7 +29,7 @@ const CountryDropdown = ({
 
   // Filter countries based on search Term
   const countriesList = window.contactoCountryData.filter(
-    (country) => country[0].toLowerCase().indexOf(searchTerm) !== -1,
+    (country) => `${country[0]}|+${country[2]}`.toLowerCase().indexOf(searchTerm) !== -1,
   )
 
   // Scroll to the selected country
@@ -50,6 +50,7 @@ const CountryDropdown = ({
           onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
           value={searchTerm}
           allowClear
+          placeholder="Search by name or dialcode"
         />
       </Block>
       <div className="sg-country-list-holder" ref={listHolderRef}>

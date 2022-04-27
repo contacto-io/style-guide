@@ -84,3 +84,10 @@ InputWithValidation.args = {
   placeholder: 'An Textfield with validation',
   errorMessage: 'Not allowed',
 }
+
+export const WithClearIcon = Template.bind({})
+WithClearIcon.args = {
+  type: 'input',
+  placeholder: 'With clear icon',
+  allowClear: true,
+}

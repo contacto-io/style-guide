@@ -28,7 +28,7 @@ window.contactoCountryData = Array.from(
 // Used to strip the numbers from the special characters
 // If the comparision is equal, we remove the last string - this helps in backspace functionality
 const stripSpecialChars = (a, b) => {
-  const regex = /[(-)\s+]/g
+  const regex = /[(-)\s]/g
   const str = a?.replace(regex, '')
   if (str?.length < 6 && str === b?.replace(regex, '')) return str?.substr(0, str.length - 1)
   return str
@@ -107,6 +107,8 @@ export const PhoneNumberInput = ({ value, onChange, className, flagURL, ...props
             </span>
           }
           onChange={({ target: { value } }) => {
+            // Stop the special character
+            if (/[=_*&^%$#@!A-Za-z]/g.test(value)) return
             if (value.length > 8) {
               const a = new AsYouType()
               a.input(value)
