@@ -37,3 +37,10 @@ Error.args = {
   message: 'This is a danger banner',
   type: 'danger',
 }
+
+export const DefaultSmall = Template.bind({})
+DefaultSmall.args = {
+  message: 'This is a small banner',
+  type: 'info',
+  size: 'small',
+}
