@@ -1,0 +1,10 @@
+.sg.contacto-highlightinputbox {
+  .contacto-input {
+    line-height: 36px;
+  }
+  [class='sam-react-highlight-span'] {
+    color: var(--danger-color);
+    background-color: var(--danger-color-4);
+  }
+}
+
