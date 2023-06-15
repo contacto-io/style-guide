@@ -4,7 +4,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.4.88",
+  "version": "0.4.89",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
@@ -107,7 +107,7 @@
     "react-sortable-hoc": "^2.0.0",
     "simplebar": "^5.3.5",
     "simplebar-react": "^2.3.5",
-    "react-highlighting-textbox": "^1.0.7"
+    "react-highlighting-textbox": "^1.0.8"
   },
   "dependencies": {}
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.scss'
 import PropTypes from 'prop-types'
-import { HightlightInputBox as HInputBox } from 'react-highlighting-textbox'
+import { HighlightInputBox as HInputBox } from 'react-highlighting-textbox'
 //import { Component } from 'antd'
 //import { Text } from '../Typography/index'
 
