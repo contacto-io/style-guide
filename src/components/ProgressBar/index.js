@@ -6,6 +6,7 @@ import './styles.scss'
 export const ProgressBar = ({ timer, strokeColors, progressPercentchange, ...props }) => {
   const duration = timer
   const [progressPercent, setProgressPercent] = useState(0)
+  let progressBarColor
 
   useEffect(() => {
     let startTime = new Date().getTime()
@@ -25,7 +26,6 @@ export const ProgressBar = ({ timer, strokeColors, progressPercentchange, ...pro
     return () => clearInterval(interval)
   }, [])
 
-  let progressBarColor = strokeColors[0]
   if (progressPercentchange)
     progressBarColor = progressPercent <= progressPercentchange ? strokeColors[0] : strokeColors[1] // Green or Red
 
