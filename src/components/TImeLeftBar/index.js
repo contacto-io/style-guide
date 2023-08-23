@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Progress } from 'antd'
-import './styles.scss'
 import PropTypes from 'prop-types'
-import '../../style/variables.scss'
 
 export const TimeLeftBar = ({
   duration,
