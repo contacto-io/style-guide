@@ -10,7 +10,7 @@ export const TimeLeftBar = ({
   className,
   ...props
 }) => {
-  const [progressPercent, setProgressPercent] = useState(0)
+  const [progressPercent, setProgressPercent] = useState(100)
   useEffect(() => {
     let startTime = new Date().getTime()
 
