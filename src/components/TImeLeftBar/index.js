@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 
 export const TimeLeftBar = ({
   duration,
-  colorone,
-  colortwo,
-  coloronethreshold,
+  colorOne,
+  colorTwo,
+  colorThreshold,
   className,
   ...props
 }) => {
@@ -23,6 +23,8 @@ export const TimeLeftBar = ({
       }
       // calculating the percentage of time left
       const percentage = 100 - (elapsedTime / duration) * 100
+
+      if (percentage < 0) clearInterval(interval)
       setProgressPercent(percentage)
     }, 100) // Update every 100 milliseconds
 
@@ -30,9 +32,9 @@ export const TimeLeftBar = ({
   }, [])
 
   let progressBarColor
-  if (coloronethreshold !== undefined)
-    progressBarColor = progressPercent <= coloronethreshold ? colortwo : colorone
-  else progressBarColor = colorone
+  if (colorThreshold !== undefined)
+    progressBarColor = progressPercent <= colorThreshold ? colorTwo : colorOne
+  else progressBarColor = colorOne
 
   return (
     <Progress
@@ -55,13 +57,13 @@ TimeLeftBar.propTypes = {
   /**
    * This indicates initial color of the bar
    */
-  colorone: PropTypes.string,
+  colorOne: PropTypes.string,
   /**
    * This indicates color that changes after color one threshold
    */
-  colortwo: PropTypes.string,
+  colorTwo: PropTypes.string,
   /**
    * This indicates when at what percentage the color one changes
    */
-  coloronethreshold: PropTypes.string,
+  colorThreshold: PropTypes.string,
 }
