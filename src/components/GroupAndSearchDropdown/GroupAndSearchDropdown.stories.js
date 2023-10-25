@@ -22,6 +22,7 @@ Default.args = {
   maxLength: 100,
   mode: 'replacer',
   placeholder: 'A simple text field',
+  onlyDropdown: false,
   onChange: (e) => console.log(e.target.value),
   options: [
     {
