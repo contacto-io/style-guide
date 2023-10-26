@@ -91,11 +91,11 @@ export const GroupAndSearchDropdown = ({
                     setSearchString('')
                   }}
                 >
-                  {child?.descriptipn ? (
+                  {child?.description ? (
                     <div className="align-desc">
                       <Text type="caption">{child?.label}</Text>
                       <Text type="caption" color="gray-2">
-                        {child?.descriptipn}
+                        {child?.description}
                       </Text>
                     </div>
                   ) : (
