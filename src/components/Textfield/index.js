@@ -186,6 +186,11 @@ const InputWithAddonDropdown = React.forwardRef(function InputWithValidation(
               popupClassName={['sg contacto-select-listbox'].join(' ')}
               value={addonAfterValue}
               onChange={handleChangeAddonAfter}
+              suffixIcon={
+                <span className="material-icons-round contacto-icon--select-caret">
+                  expand_more
+                </span>
+              }
             >
               {addonAfterOptions.map((option) => (
                 <Option key={option.value} value={option.value}>

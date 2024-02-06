@@ -269,4 +269,20 @@
   .ant-input-group-addon {
     background-color: var(--background-highlight-color);
   }
+
+  .ant-select-arrow {
+    margin-top: 0;
+    top: 50%;
+    right: 8px;
+    color: var(--gray-1);
+    width: auto;
+    height: auto;
+    font-size: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    .contacto-icon--select-caret {
+      font-size: 20px;
+    }
+  }
 }
