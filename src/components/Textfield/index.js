@@ -3,7 +3,7 @@ import { Input, Form, Select } from 'antd'
 import { Text } from '../Typography/index'
 import { Icon } from '../Icon/index'
 import PropTypes from 'prop-types'
-import './Textfield.less'
+import './textfield.scss'
 
 const { Option } = Select
 
