@@ -256,14 +256,20 @@
 .input-with-addon-dropdown {
 
   & input {
+    height: 100%;
     &:active,
-    &:hover {
+    &:hover,
+    &:focus {
       border: none;
     }
   }
 
   & .sg.contacto-input-wrapper .contacto-input {
     padding-left: 0;
+    height: 100%;
+  }
+  & .ant-input-group {
+    height: 36px;
   }
 
   .ant-input-group-addon {
