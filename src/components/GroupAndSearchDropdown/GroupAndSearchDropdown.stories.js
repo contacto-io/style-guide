@@ -44,3 +44,33 @@ Default.args = {
     },
   ],
 }
+
+export const OnlyDropdown = Template.bind({})
+OnlyDropdown.args = {
+  dropdownIcon: BracketIcon,
+  maxLength: 100,
+  mode: 'replacer',
+  placeholder: 'A simple text field',
+  onlyDropdown: true,
+  onChange: (e) => console.log(e.target.value),
+  options: [
+    {
+      title: 'System Variables',
+      children: [
+        { label: 'Abcd', value: 'Abcd', description: 'This is a Description' },
+        { label: 'dsfsdf', value: 'dsfsdf' },
+        { label: 'gtg', value: 'gtg' },
+        { label: 'qwe', value: 'qwe' },
+      ],
+    },
+    {
+      title: 'API 2',
+      children: [
+        { label: 'Absfwecd', value: 'Absfwecd' },
+        { label: 'ewrew', value: 'ewrew' },
+        { label: 'yut', value: 'yut' },
+        { label: 'pop', value: 'pop' },
+      ],
+    },
+  ],
+}
