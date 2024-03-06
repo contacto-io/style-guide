@@ -44,6 +44,21 @@ export const GroupAndSearchDropdown = ({
   const OptionsDropdown = () => {
     const [searchString, setSearchString] = useState('')
 
+    const handleOnchange = (child) => {
+      const finalValue = `{{${child?.value}}}`
+      if (onlyDropdown && parentTextFieldRef) parentTextFieldRef.current?.focus()
+      else if (textFieldRef) textFieldRef.current?.focus()
+
+      onChange({
+        target: {
+          value: mode === 'replacer' ? finalValue : insertText(finalValue, document.activeElement),
+        },
+        isSelection: true,
+      })
+      setShowDropdown(false)
+      setSearchString('')
+    }
+
     return (
       <div className={`${className} options-dropdown`}>
         <div className="search-box">
@@ -74,21 +89,7 @@ export const GroupAndSearchDropdown = ({
                   className="group-option"
                   key={childIndex}
                   onClick={() => {
-                    const finalValue = `{{${child?.value}}}`
-                    if (onlyDropdown && parentTextFieldRef) parentTextFieldRef.current?.focus()
-                    else if (textFieldRef) textFieldRef.current?.focus()
-
-                    onChange({
-                      target: {
-                        value:
-                          mode === 'replacer'
-                            ? finalValue
-                            : insertText(finalValue, document.activeElement),
-                      },
-                      isSelection: true,
-                    })
-                    setShowDropdown(false)
-                    setSearchString('')
+                    handleOnchange(child)
                   }}
                 >
                   {child?.description ? (
@@ -118,9 +119,7 @@ export const GroupAndSearchDropdown = ({
         placement="bottomRight"
         onVisibleChange={(visible) => setShowDropdown(visible)}
       >
-        {onlyDropdown ? (
-          <div></div>
-        ) : (
+        {!onlyDropdown ? (
           <div className={`group-dropdown`}>
             <TextField
               type={'text'}
@@ -161,6 +160,8 @@ export const GroupAndSearchDropdown = ({
               {...props}
             />
           </div>
+        ) : (
+          <div></div>
         )}
       </Dropdown>
     </>
