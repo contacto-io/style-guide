@@ -216,3 +216,80 @@
     color: var(--gray-1) !important;
   }
 }
+
+.sg.contacto-select-listbox {
+  padding: 0;
+  border-radius: 0;
+  min-width: 100px !important;
+  border-left: none;
+
+  .ant-select-item {
+    line-height: 33px;
+    border-bottom: 1px solid var(--border-color);
+
+    &:hover,
+    &-option-active {
+      background-color: var(--background-highlight-color);
+    }
+  }
+
+  .ant-select-item-option-selected {
+    background-color: var(--background-highlight-color);
+    color: var(--primary-color);
+  }
+
+  .ant-select-item.ant-select-item-group {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--background-highlight-color);
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 18px !important;
+    color: var(--gray-2);
+    font-weight: 600;
+    min-height: 0;
+    padding: 4px 16px;
+  }
+}
+
+.input-with-addon-dropdown {
+
+  & input {
+    height: 100%;
+    border-right: none;
+    &:active,
+    &:hover,
+    &:focus {
+      border: none;
+    }
+  }
+
+  & .sg.contacto-input-wrapper .contacto-input {
+    padding-left: 0;
+    height: 100%;
+  }
+  & .ant-input-group {
+    height: 36px;
+  }
+
+  .ant-input-group-addon {
+    background-color: var(--background-highlight-color);
+  }
+
+  .ant-select-arrow {
+    margin-top: 0;
+    top: 50%;
+    right: 8px;
+    color: var(--gray-1);
+    width: auto;
+    height: auto;
+    font-size: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    .contacto-icon--select-caret {
+      font-size: 20px;
+    }
+  }
+}
