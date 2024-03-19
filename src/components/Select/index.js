@@ -58,7 +58,7 @@ export const Select = React.forwardRef(function Select(
           <Text type="caption-bold">{label}</Text>
         </div>
       )}
-      {mode !== 'multiple' ? (
+      {!mode ? (
         <AntSelect
           className={[
             'contacto-select',
@@ -97,7 +97,7 @@ export const Select = React.forwardRef(function Select(
             listHeight={listHeight || 220}
             placeholder={placeholder}
             dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
-            mode="multiple"
+            mode={mode}
             maxTagCount={maxTagCount}
             tagRender={(tagProps) => (
               <Tag
@@ -216,7 +216,7 @@ Select.propTypes = {
   /**
    * Set it to multiple to get multiple box
    */
-  mode: PropTypes.string,
+  mode: PropTypes.oneOf(['multiple', 'tags']),
   /**
    * Set Max tag count before getting ellipsis
    */

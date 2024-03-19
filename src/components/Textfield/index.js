@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Input, Form } from 'antd'
+import { Input, Form, Select } from 'antd'
 import { Text } from '../Typography/index'
 import { Icon } from '../Icon/index'
 import PropTypes from 'prop-types'
 import './textfield.scss'
+
+const { Option } = Select
 
 export const TEXTFIELD_TYPES = ['input', 'search-box', 'no-shadow']
 /**
@@ -160,8 +162,58 @@ const InputWithErrorMsg = React.forwardRef(function InputWithValidation(
   )
 })
 
+const InputWithAddonDropdown = React.forwardRef(function InputWithValidation(
+  {
+    error,
+    className,
+    addonAfterOptions,
+    addonAfterValue,
+    handleChangeAddonAfter,
+    helperText,
+    errorMsg,
+    ...props
+  },
+  ref,
+) {
+  return (
+    <div className="input-with-addon-dropdown">
+      <TextField
+        ref={ref}
+        className={`textbox ${error ? 'has-error' : ''} ${className}`}
+        addonAfter={
+          addonAfterOptions && (
+            <Select
+              popupClassName={['sg contacto-select-listbox'].join(' ')}
+              value={addonAfterValue}
+              onChange={handleChangeAddonAfter}
+              suffixIcon={
+                <span className="material-icons-round contacto-icon--select-caret">
+                  expand_more
+                </span>
+              }
+            >
+              {addonAfterOptions.map((option) => (
+                <Option key={option.value} value={option.value}>
+                  {option.label}
+                </Option>
+              ))}
+            </Select>
+          )
+        }
+        {...props}
+      />
+      {(helperText || (error && errorMsg)) && (
+        <Text color={error ? 'danger-color' : 'gray-2'} type="caption" className="helper-text">
+          {error ? errorMsg : helperText}
+        </Text>
+      )}
+    </div>
+  )
+})
+
 TextField.WithValidation = WithValidation
 TextField.InputWithErrorMsg = InputWithErrorMsg
+TextField.InputWithAddonDropdown = InputWithAddonDropdown
 
 TextField.propTypes = {
   /**

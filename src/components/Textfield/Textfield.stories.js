@@ -21,6 +21,7 @@ export default {
 const Template = (args) => <TextField {...args} />
 const WithValidation = (args) => <TextField.WithValidation {...args} />
 const InputWithErrorMsg = (args) => <TextField.InputWithErrorMsg {...args} />
+const InputWithAddonDropdown = (args) => <TextField.InputWithAddonDropdown {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -149,4 +150,24 @@ TextFieldWithValidation.args = {
   label: 'AI Chatbot Name',
   placeholder: '',
   onSuffixClick: () => console.log('suffix clicked'),
+}
+
+export const TextFieldWithAddonDropdown = InputWithAddonDropdown.bind({})
+TextFieldWithAddonDropdown.args = {
+  label: 'With dropdown',
+  addonAfterOptions: [
+    {
+      label: 'Hours',
+      value: 'hours',
+    },
+    {
+      label: 'Minutes',
+      value: 'minutes',
+    },
+    {
+      label: 'Seconds',
+      value: 'seconds',
+    },
+  ],
+  addonAfterValue: 'minutes',
 }

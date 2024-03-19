@@ -190,3 +190,15 @@ MultipleSelect.args = {
     { value: 'Butter' },
   ],
 }
+
+export const TagsSelect = Template.bind({})
+TagsSelect.args = {
+  type: 'input',
+  size: 'default',
+  placeholder: 'A multi select textfield',
+  mode: 'tags',
+  maxTagCount: 'responsive',
+  maxTagModalTitle: 'Select items',
+  showCloseTag: true,
+  options: [{ value: 'Apple' }, { value: 'Ball' }],
+}

@@ -26,9 +26,11 @@ export const GroupAndSearchDropdown = ({
   onChange,
   dropdownIcon,
   openOnTextboxClick,
+  onlyDropdown,
+  parentTextFieldRef,
   ...props
 }) => {
-  const [showDropdown, setShowDropdown] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(onlyDropdown)
   const textFieldRef = useRef()
   const searchRef = useRef()
 
@@ -42,8 +44,23 @@ export const GroupAndSearchDropdown = ({
   const OptionsDropdown = () => {
     const [searchString, setSearchString] = useState('')
 
+    const handleOnchange = (child) => {
+      const finalValue = `{{${child?.value}}}`
+      if (onlyDropdown && parentTextFieldRef) parentTextFieldRef.current?.focus()
+      else if (textFieldRef) textFieldRef.current?.focus()
+
+      onChange({
+        target: {
+          value: mode === 'replacer' ? finalValue : insertText(finalValue, document.activeElement),
+        },
+        isSelection: true,
+      })
+      setShowDropdown(false)
+      setSearchString('')
+    }
+
     return (
-      <div className="options-dropdown">
+      <div className={`${className} options-dropdown`}>
         <div className="search-box">
           <TextField
             type="search-box"
@@ -72,22 +89,19 @@ export const GroupAndSearchDropdown = ({
                   className="group-option"
                   key={childIndex}
                   onClick={() => {
-                    const finalValue = `{{${child?.value}}}`
-                    textFieldRef.current.focus()
-                    onChange({
-                      target: {
-                        value:
-                          mode === 'replacer'
-                            ? finalValue
-                            : insertText(finalValue, document.activeElement),
-                      },
-                      isSelection: true,
-                    })
-                    setShowDropdown(false)
-                    setSearchString('')
+                    handleOnchange(child)
                   }}
                 >
-                  <Text type="caption">{child?.label}</Text>
+                  {child?.description ? (
+                    <div className="align-desc">
+                      <Text type="caption">{child?.label}</Text>
+                      <Text type="caption" color="gray-2">
+                        {child?.description}
+                      </Text>
+                    </div>
+                  ) : (
+                    <Text type="caption">{child?.label}</Text>
+                  )}
                 </div>
               ))}
             </>
@@ -96,7 +110,6 @@ export const GroupAndSearchDropdown = ({
       </div>
     )
   }
-
   return (
     <>
       <Dropdown
@@ -106,47 +119,50 @@ export const GroupAndSearchDropdown = ({
         placement="bottomRight"
         onVisibleChange={(visible) => setShowDropdown(visible)}
       >
-        <div className={`group-dropdown`}>
-          <TextField
-            type={'text'}
-            ref={textFieldRef}
-            className={className}
-            suffix={
-              <div
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setShowDropdown(!showDropdown)
-                }}
-                className="contacto-icon--input-suffix-variable-dropdown"
-              >
-                <Icon svg={dropdownIcon} size={20} />
-              </div>
-            }
-            onClick={(e) => !openOnTextboxClick && e.stopPropagation()}
-            onKeyUp={(e) => {
-              e.persist()
-              const value = e.target.value
-              // const keyPressed = String.fromCharCode(e.keyCode)
-              const caretEnd = e.target.selectionEnd
-              const keyPressed = value[caretEnd - 1]
-              const openDropdown =
-                value.slice(-2) === '{{' ||
-                (keyPressed === '|' && /\{\{[\w|]+\|$/g.test(value.substring(0, caretEnd)))
-              setShowDropdown(openDropdown)
-            }}
-            onChange={(e) => {
-              // So that the event is not lost
-              e.persist()
-              const caretStart = e.target.selectionStart
-              const caretEnd = e.target.selectionEnd
-              onChange(e)
+        {!onlyDropdown ? (
+          <div className={`group-dropdown`}>
+            <TextField
+              type={'text'}
+              ref={textFieldRef}
+              suffix={
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setShowDropdown(!showDropdown)
+                  }}
+                  className="contacto-icon--input-suffix-variable-dropdown"
+                >
+                  <Icon svg={dropdownIcon} size={20} />
+                </div>
+              }
+              onClick={(e) => !openOnTextboxClick && e.stopPropagation()}
+              onKeyUp={(e) => {
+                e.persist()
+                const value = e.target.value
+                // const keyPressed = String.fromCharCode(e.keyCode)
+                const caretEnd = e.target.selectionEnd
+                const keyPressed = value[caretEnd - 1]
+                const openDropdown =
+                  value.slice(-2) === '{{' ||
+                  (keyPressed === '|' && /\{\{[\w|]+\|$/g.test(value.substring(0, caretEnd)))
+                setShowDropdown(openDropdown)
+              }}
+              onChange={(e) => {
+                // So that the event is not lost
+                e.persist()
+                const caretStart = e.target.selectionStart
+                const caretEnd = e.target.selectionEnd
+                onChange(e)
 
-              // To preserve the caret position
-              setTimeout(() => e.target.setSelectionRange?.(caretStart, caretEnd), 0)
-            }}
-            {...props}
-          />
-        </div>
+                // To preserve the caret position
+                setTimeout(() => e.target.setSelectionRange?.(caretStart, caretEnd), 0)
+              }}
+              {...props}
+            />
+          </div>
+        ) : (
+          <div></div>
+        )}
       </Dropdown>
     </>
   )
@@ -164,4 +180,6 @@ GroupAndSearchDropdown.propTypes = {
   onChange: PropTypes.func,
   dropdownIcon: PropTypes.any,
   openOnTextboxClick: PropTypes.bool,
+  onlyDropdown: PropTypes.bool,
+  parentTextFieldRef: PropTypes.any,
 }
