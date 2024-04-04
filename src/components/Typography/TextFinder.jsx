@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TextField, Text, Select } from '../../index.js'
 import { Row, Col, Card } from 'antd'
 import { TEXT_TYPES } from './TEXT_TYPES'
-import { Source } from '@storybook/addon-docs'
+import { Source } from '@storybook/blocks'
 import dedent from 'ts-dedent'
 import cssVars from '../../utils/cssVars'
 
