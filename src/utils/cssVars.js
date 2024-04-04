@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import css from '!!raw-loader!../style/variables.scss'
+import css from '../style/variables.scss?inline'
 
 const cssVars = (() => {
   return css.match(/(--.*):/g).map((variable) => variable.replace('--', '').replace(':', ''))
