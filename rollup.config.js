@@ -3,9 +3,10 @@ import external from 'rollup-plugin-peer-deps-external'
 import del from 'rollup-plugin-delete'
 import pkg from './package.json'
 import postcss from 'rollup-plugin-postcss'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import { uglify } from 'rollup-plugin-uglify'
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   input: 'src/index.js',
   output: [
@@ -14,8 +15,14 @@ export default {
   ],
   plugins: [
     external(),
+    commonjs(),
+    nodeResolve({
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    }),
     babel({
       exclude: 'node_modules/**',
+      babelHelpers: 'bundled',
+      extensions: ['.js', '.ts', '.jsx'],
     }),
     postcss(),
     uglify(),
