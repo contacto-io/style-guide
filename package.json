@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "pnpm run css-build && rollup -c",
-    "css-build": "node-sass --omit-source-map-url src/style/main.scss build/style-guide.css",
+    "css-build": "sass --no-source-map src/style/main.scss build/style-guide.css",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -s static",
     "deploy-storybook": "storybook-to-ghpages",
