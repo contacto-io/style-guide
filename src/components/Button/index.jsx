@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button as AntButton } from 'antd'
 import { Icon } from '../Icon/index'
+import {ShadButton} from '../ui/button'
 import './button.scss'
 export const BUTTON_TYPES = [
   'primary',
@@ -53,6 +54,8 @@ export const Button = ({
   variant,
   ...props
 }) => {
+    if(window.library === 'shadcn')
+    return <ShadButton type={type} size={size} icon={icon} {...props}>{label || children}</ShadButton>
   return (
     <AntButton
       className={getButtonClassName(

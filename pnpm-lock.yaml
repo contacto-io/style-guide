@@ -7,6 +7,9 @@ dependencies:
   '@formatjs/intl-locale':
     specifier: ^3.4.5
     version: 3.4.5
+  '@radix-ui/react-slot':
+    specifier: ^1.0.2
+    version: 1.0.2(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -87,6 +90,9 @@ devDependencies:
   '@testing-library/react':
     specifier: ^12.0.0
     version: 12.1.5(react-dom@18.2.0)(react@18.2.0)
+  '@types/node':
+    specifier: ^20.12.4
+    version: 20.12.4
   antd:
     specifier: ^4.16.8
     version: 4.24.15(react-dom@18.2.0)(react@18.2.0)
@@ -138,6 +144,9 @@ devDependencies:
   rollup-plugin-delete:
     specifier: ^2.0.0
     version: 2.0.0
+  rollup-plugin-esbuild:
+    specifier: ^6.1.1
+    version: 6.1.1(rollup@2.79.1)
   rollup-plugin-peer-deps-external:
     specifier: ^2.2.4
     version: 2.2.4(rollup@2.79.1)
@@ -170,7 +179,7 @@ devDependencies:
     version: 2.2.0
   vite:
     specifier: ^5.2.8
-    version: 5.2.8(sass@1.74.1)
+    version: 5.2.8(@types/node@20.12.4)(sass@1.74.1)
   vite-plugin-svgr:
     specifier: ^4.2.0
     version: 4.2.0(rollup@2.79.1)(vite@5.2.8)
@@ -2988,7 +2997,7 @@ packages:
       glob-promise: 4.2.2(glob@7.2.3)
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2
-      vite: 5.2.8(sass@1.74.1)
+      vite: 5.2.8(@types/node@20.12.4)(sass@1.74.1)
     dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
@@ -3292,7 +3301,6 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.4
       react: 18.2.0
-    dev: true
 
   /@radix-ui/react-slot@1.0.2(@types/react@17.0.80)(react@18.2.0):
     resolution: {integrity: sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==}
@@ -3321,7 +3329,6 @@ packages:
       '@babel/runtime': 7.24.4
       '@radix-ui/react-compose-refs': 1.0.1(react@18.2.0)
       react: 18.2.0
-    dev: true
 
   /@rc-component/portal@1.1.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-6f813C0IsasTZms08kfA8kPAGxbbkYToa8ALaiDIGGECU4i9hj8Plgbx0sNJDrey3EtHO30hmdaxtT0138xZcg==}
@@ -3856,7 +3863,7 @@ packages:
       fs-extra: 11.2.0
       magic-string: 0.30.9
       ts-dedent: 2.2.0
-      vite: 5.2.8(sass@1.74.1)
+      vite: 5.2.8(@types/node@20.12.4)(sass@1.74.1)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -4309,7 +4316,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       resolve: 1.22.8
       tsconfig-paths: 4.2.0
-      vite: 5.2.8(sass@1.74.1)
+      vite: 5.2.8(@types/node@20.12.4)(sass@1.74.1)
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
@@ -4681,19 +4688,19 @@ packages:
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.11.0
+      '@types/node': 20.12.4
     dev: true
 
   /@types/connect@3.4.38:
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.12.4
     dev: true
 
   /@types/cross-spawn@6.0.6:
     resolution: {integrity: sha512-fXRhhUkG4H3TQk5dBhQ7m/JDdSNHKwR2BBia62lhwEIq9xGiQKLxd6LymNhn47SjXhsUEPmxi+PKw2OkW4LLjA==}
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.12.4
     dev: true
 
   /@types/debug@4.1.12:
@@ -4741,7 +4748,7 @@ packages:
   /@types/express-serve-static-core@4.17.43:
     resolution: {integrity: sha512-oaYtiBirUOPQGSWNGPWnzyAFJ0BP3cwvN4oWZQY+zUBwpVIGsKUkpBpSztp74drYcjavs7SKFZ4DX1V2QeN8rg==}
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.12.4
       '@types/qs': 6.9.11
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -4764,7 +4771,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.11.0
+      '@types/node': 20.12.4
     dev: true
 
   /@types/hast@3.0.4:
@@ -4817,8 +4824,8 @@ packages:
       undici-types: 5.26.5
     dev: true
 
-  /@types/node@20.11.0:
-    resolution: {integrity: sha512-o9bjXmDNcF7GbM4CNQpmi+TutCgap/K3w1JyKgxAjqx41zp9qlIAVFi0IhCNsJcXolEqLWhbFbEeL0PvYm4pcQ==}
+  /@types/node@20.12.4:
+    resolution: {integrity: sha512-E+Fa9z3wSQpzgYQdYmme5X3OTuejnnTx88A6p6vkkJosR3KBz+HpE3kqNm98VE6cfLFcISx7zW7MsJkH6KwbTw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -4860,7 +4867,7 @@ packages:
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.12.4
     dev: true
 
   /@types/resolve@1.20.6:
@@ -4879,14 +4886,14 @@ packages:
     resolution: {integrity: sha512-x2EM6TJOybec7c52BX0ZspPodMsQUd5L6PRwOunVyVUhXiBSKf3AezDL8Dgvgt5o0UfKNfuA0eMLr2wLT4AiBA==}
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.11.0
+      '@types/node': 20.12.4
     dev: true
 
   /@types/serve-static@1.15.7:
     resolution: {integrity: sha512-W8Ym+h8nhuRwaKPaDw34QUkwsGi6Rc4yYqvKFo5rm2FUEhCFbzVWrxXUxuKK8TASjWsysJY0nsmNCGhCOIsrOw==}
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 20.11.0
+      '@types/node': 20.12.4
       '@types/send': 0.17.4
     dev: true
 
@@ -6362,6 +6369,10 @@ packages:
     resolution: {integrity: sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ==}
     dev: true
 
+  /es-module-lexer@1.5.0:
+    resolution: {integrity: sha512-pqrTKmwEIgafsYZAGw9kszYzmagcE/n4dbgwGWLEXg7J4QFJVQRBld8j3Q3GNez79jzxZshq0bcT962QHOghjw==}
+    dev: true
+
   /esbuild-plugin-alias@0.2.1:
     resolution: {integrity: sha512-jyfL/pwPqaFXyKnj8lP8iLk6Z0m099uXR45aSN8Av1XD4vhvQutxxPzgA2bTcAwQpa1zCXDcWOlhFgyP3GKqhQ==}
     dev: true
@@ -6826,6 +6837,12 @@ packages:
   /get-stream@8.0.1:
     resolution: {integrity: sha512-VaUJspBffn/LMCJVoMvSAdmscJyS1auj5Zulnn5UoYcY531UWmdwhRWkcGKnGU93m5HSXP9LP2usOryrBtQowA==}
     engines: {node: '>=16'}
+    dev: true
+
+  /get-tsconfig@4.7.3:
+    resolution: {integrity: sha512-ZvkrzoUA0PQZM6fy6+/Hce561s+faD1rsNwhnO5FelNjyy7EMGJ3Rz1AQ8GYDWjhRs/7dBLOEJvhK8MiEJOAFg==}
+    dependencies:
+      resolve-pkg-maps: 1.0.0
     dev: true
 
   /giget@1.2.3:
@@ -10569,6 +10586,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /resolve-pkg-maps@1.0.0:
+    resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
+    dev: true
+
   /resolve@1.22.8:
     resolution: {integrity: sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==}
     hasBin: true
@@ -10613,6 +10634,22 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       del: 5.1.0
+    dev: true
+
+  /rollup-plugin-esbuild@6.1.1(rollup@2.79.1):
+    resolution: {integrity: sha512-CehMY9FAqJD5OUaE/Mi1r5z0kNeYxItmRO2zG4Qnv2qWKF09J2lTy5GUzjJR354ZPrLkCj4fiBN41lo8PzBUhw==}
+    engines: {node: '>=14.18.0'}
+    peerDependencies:
+      esbuild: '>=0.18.0'
+      rollup: ^1.20.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@2.79.1)
+      debug: 4.3.4
+      es-module-lexer: 1.5.0
+      get-tsconfig: 4.7.3
+      rollup: 2.79.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /rollup-plugin-peer-deps-external@2.2.4(rollup@2.79.1):
@@ -11733,14 +11770,14 @@ packages:
       '@rollup/pluginutils': 5.1.0(rollup@2.79.1)
       '@svgr/core': 8.1.0
       '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0)
-      vite: 5.2.8(sass@1.74.1)
+      vite: 5.2.8(@types/node@20.12.4)(sass@1.74.1)
     transitivePeerDependencies:
       - rollup
       - supports-color
       - typescript
     dev: true
 
-  /vite@5.2.8(sass@1.74.1):
+  /vite@5.2.8(@types/node@20.12.4)(sass@1.74.1):
     resolution: {integrity: sha512-OyZR+c1CE8yeHw5V5t59aXsUPPVTHMDjEZz8MgguLL/Q7NblxhZUlTu9xSPqlsUO/y+X7dlU05jdhvyycD55DA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -11768,6 +11805,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.12.4
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.14.0

@@ -6,6 +6,7 @@ import postcss from 'rollup-plugin-postcss'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { uglify } from 'rollup-plugin-uglify'
+import esbuild from 'rollup-plugin-esbuild'
 
 // If local build output a esm file with sourcemap
 const isLocal = process.argv.includes('--local')
@@ -23,11 +24,7 @@ export default {
     nodeResolve({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     }),
-    babel({
-      exclude: 'node_modules/**',
-      babelHelpers: 'bundled',
-      extensions: ['.js', '.ts', '.jsx'],
-    }),
+    esbuild(),
     postcss(),
     uglify(),
     del({ targets: ['dist/*'] }),

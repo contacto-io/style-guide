@@ -74,7 +74,7 @@ SecondaryDanger.args = {
 export const SmallButton = Template.bind({})
 SmallButton.args = {
   size: 'small',
-  label: 'Small Button',
+  label: 'Small',
   type: 'primary',
 }
 
