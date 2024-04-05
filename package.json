@@ -16,14 +16,13 @@
   ],
   "scripts": {
     "build": "pnpm run css-build && rollup -c",
+    "watch": "pnpm run css-build && rollup -c -w --local",
     "css-build": "sass --no-source-map src/style/main.scss build/style-guide.css",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -s static",
     "deploy-storybook": "storybook-to-ghpages",
     "chromatic": "npx chromatic --project-token=b366e708e279",
-    "analyze": "source-map-explorer 'build/*.js'",
-    "vite:start": "vite",
-    "vite:build": "vite build"
+    "analyze": "source-map-explorer 'build/*.js'"
   },
   "eslintConfig": {
     "extends": [
