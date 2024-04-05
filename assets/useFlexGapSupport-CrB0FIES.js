@@ -1,0 +1,1 @@
+import{b as s}from"./index-CTNOGpui.js";import{r as t}from"./index-Dl6G-zuu.js";import{d as p}from"./styleChecker-D06dXjTH.js";const i=function(){var r=t.useState(!1),e=s(r,2),a=e[0],o=e[1];return t.useEffect(function(){o(p())},[]),a};export{i as u};
