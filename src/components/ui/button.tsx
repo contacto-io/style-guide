@@ -1,9 +1,8 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "../../lib/utils"
-import { ChevronRight, Loader2, Mail } from "lucide-react"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "../../lib/utils";
+import { ChevronRight, Loader2, Mail } from "lucide-react";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
@@ -22,7 +21,7 @@ const buttonVariants = cva(
           "bg-white text-primary hover:bg-secondary/80 border border-primary",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-                "link-danger": "text-destructive underline-offset-4 hover:underline",
+        "link-danger": "text-destructive underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -36,33 +35,39 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
-export interface ButtonProps
+interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+  asChild?: boolean;
+  loading?: boolean;
+  icon?: boolean;
+    children?: React.ReactNode;
 }
 
-
 const ShadButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, icon, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-        const propsMap = {
-            secondary: 'secondary',
-            primary: 'default',
-            "danger-primary": 'destructive',
-            small: 'sm',
-            large: 'lg',
-            icon: 'icon',
-            "danger-secondary": "danger-secondary",
-            link: "link",
-            "link-danger": "link-danger"
-        }
-        if(props.loading) return <ButtonLoading />
-        if(icon && (!props.children)) return <ButtonIcon variant={variant} {...props}/>
-        if(icon) return <ButtonWithIcon variant={variant} {...props}/>
-        console.log(propsMap[size], propsMap[props.type], props.type)
+  ({ className, variant, size, asChild = false, icon, loading, children, ...props }, ref) => {  
+    const propsMap = {
+      secondary: 'secondary',
+      primary: 'default',
+      "danger-primary": 'destructive',
+      small: 'sm',
+      large: 'lg',
+      icon: 'icon',
+      "danger-secondary": "danger-secondary",
+      link: "link",
+      "link-danger": "link-danger"
+    };
+
+    if(loading) return <ButtonLoading />
+
+    if(icon && (!children)) return <ButtonIcon variant={variant} {...props}/>
+
+    if(icon) return <ButtonWithIcon  {...props}/>
+
+    const Comp = asChild ? Slot : "button";
+
     return (
       <Comp
         className={cn(buttonVariants({ variant: variant || propsMap[props.type], size:propsMap[size], className }))}
@@ -71,32 +76,28 @@ const ShadButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       />
     )
   }
+);
+
+ShadButton.displayName = "Button";
+
+const ButtonWithIcon: React.FC<ButtonProps> = ({children, ...props}: ButtonProps) => (
+  <ShadButton {...props}>
+    <Mail className="mr-2 h-4 w-4" /> {children}
+  </ShadButton>
 )
-ShadButton.displayName = "Button"
 
-function ButtonWithIcon(props) {
-  return (
-    <ShadButton>
-      <Mail className="mr-2 h-4 w-4" /> {props.children || props.label}
-    </ShadButton>
-  )
-}
+const ButtonIcon: React.FC<ButtonProps> = (props: ButtonProps) => (
+  <ShadButton size="icon" {...props}>
+    <ChevronRight className="h-4 w-4" />
+  </ShadButton>
+);
 
-export function ButtonIcon() {
-  return (
-    <ShadButton size="icon">
-      <ChevronRight className="h-4 w-4" />
-    </ShadButton>
-  )
-}
+const ButtonLoading: React.FC<ButtonProps> = () => (
+  <ShadButton disabled>
+    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+    Please wait
+  </ShadButton>
+);
 
-export function ButtonLoading() {
-  return (
-    <ShadButton disabled>
-      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-      Please wait
-    </ShadButton>
-  )
-}
+export { ShadButton, buttonVariants, ButtonIcon, ButtonLoading, ButtonWithIcon };
 
-export { ShadButton, buttonVariants }
