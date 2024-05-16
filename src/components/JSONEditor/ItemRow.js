@@ -55,10 +55,9 @@ function ItemRow({
   onNodeTypeChange,
   onRelatedValueChange,
 }) {
-  const selectedChildrenLength = useMemo(
-    () => item.sub_object?.filter((i) => i.selected).length,
-    [item],
-  )
+  const selectedChildrenLength = useMemo(() => item.sub_object?.filter((i) => i.selected).length, [
+    item,
+  ])
   const isIndeterminate =
     selectedChildrenLength > 0 && selectedChildrenLength < item.sub_object.length
 

@@ -35,7 +35,14 @@ const stripSpecialChars = (a, b) => {
 }
 
 // Component
-export const PhoneNumberInput = ({ value, onChange, className, flagURL, ...props }) => {
+export const PhoneNumberInput = ({
+  value,
+  onChange,
+  className,
+  searchFieldSize,
+  flagURL,
+  ...props
+}) => {
   const ref = useRef()
   const textFieldRef = useRef()
   const wrapperRef = useRef()
@@ -80,6 +87,7 @@ export const PhoneNumberInput = ({ value, onChange, className, flagURL, ...props
           value={number}
           flagURL={flagURL}
           wrapperRef={wrapperRef}
+          searchFieldSize={searchFieldSize}
         />
       }
       overlayClassName="sg country-dropdown"
@@ -95,6 +103,7 @@ export const PhoneNumberInput = ({ value, onChange, className, flagURL, ...props
             'sg',
             'contacto-country-input',
             visible ? 'dropdown-open' : '',
+            countryRef.current ? 'flag-exist' : 'no-flag-exist',
           ].join(' ')}
           icon={
             <span className="country-flag-icon" onClick={() => setVisible(!visible)}>
@@ -136,6 +145,7 @@ PhoneNumberInput.propTypes = {
    */
   onChange: PropTypes.any,
   flagURL: PropTypes.any,
+  searchFieldSize: PropTypes.string,
 }
 
 PhoneNumberInput.defaultProps = {
