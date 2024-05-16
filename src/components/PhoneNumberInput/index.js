@@ -26,11 +26,9 @@ window.contactoCountryData = Array.from(
 ).map((iso) => [regionNames.of(iso), iso, getCountryCallingCode(iso)])
 
 // Used to strip the numbers from the special characters
-// If the comparision is equal, we remove the last string - this helps in backspace functionality
-const stripSpecialChars = (a, b) => {
+const stripSpecialChars = (a) => {
   const regex = /[(-)\s+]/g
   const str = a?.replace(regex, '')
-  if (str?.length < 6 && str === b?.replace(regex, '')) return str?.substr(0, str.length - 1)
   return str
 }
 
@@ -43,17 +41,15 @@ export const PhoneNumberInput = ({
   flagURL,
   ...props
 }) => {
-  const ref = useRef()
   const textFieldRef = useRef()
   const wrapperRef = useRef()
   const [visible, setVisible] = useState(false)
   const [number, setNumber] = useState(value)
   const countryRef = useRef()
-
   // Effect that handles the value change and formats the number accordingly
   useEffect(() => {
     setVisible(false)
-    let newValue = stripSpecialChars(value, ref.current)
+    let newValue = stripSpecialChars(value)
     const countryFromDialMap = dialCodeMap[newValue]?.[0]
     countryRef.current = countryFromDialMap || countryRef.current
     if (newValue && newValue[0] !== '+') newValue = '+' + newValue
@@ -68,9 +64,9 @@ export const PhoneNumberInput = ({
         newValue &&
         `+${a.getCallingCode() || ''} ${new AsYouType(countryRef.current).input(nationalNumber)}`
     }
-    ref.current = finalNumber
     setNumber(finalNumber)
   }, [value])
+
   return (
     <Popover
       placement="bottomLeft"
@@ -103,7 +99,6 @@ export const PhoneNumberInput = ({
             'sg',
             'contacto-country-input',
             visible ? 'dropdown-open' : '',
-            countryRef.current ? 'flag-exist' : 'no-flag-exist',
           ].join(' ')}
           icon={
             <span className="country-flag-icon" onClick={() => setVisible(!visible)}>
