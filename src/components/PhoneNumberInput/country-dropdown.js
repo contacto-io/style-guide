@@ -14,6 +14,7 @@ const CountryDropdown = ({
   value,
   flagURL,
   wrapperRef,
+  searchFieldSize,
 }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const listHolderRef = useRef()
@@ -50,6 +51,8 @@ const CountryDropdown = ({
           onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
           value={searchTerm}
           allowClear
+          placeholder="Search"
+          size={searchFieldSize}
         />
       </Block>
       <div className="sg-country-list-holder" ref={listHolderRef}>
@@ -75,7 +78,7 @@ const CountryDropdown = ({
                 circle
                 size={20}
               />
-              <Text className="sg-country-list-item-label" type="caption">
+              <Text className="sg-country-list-item-label" type="body" ellipsis>
                 <span className="sg-country-list-item-label__country-name">{country[0]}</span>
                 <span className="sg-country-list-item-label__country-code">+{country[2]}</span>
               </Text>
